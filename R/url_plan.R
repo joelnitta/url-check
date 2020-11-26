@@ -4,10 +4,11 @@ plan <- drake_plan(
   urls_to_check = read_csv("data/Sample_500.csv"),
   
   # Check the URLs in slices of data so R doesn't crash
-  # (n_slices is set by _drake.R)
+  # - For example, if the original data has 500 rows and you split it
+  #   into 50 slices, each slice will have 10 rows
   url_results_each = target(
     check_url(urls_to_check),
-    transform = split(urls_to_check, slices = n_slices)
+    transform = split(urls_to_check, slices = 50)
   ),
   
   # Combine the results into single dataframe
@@ -17,6 +18,6 @@ plan <- drake_plan(
   ),
   
   # Write out the final results
-  url_results_out = write_csv(url_results_combined, "url_results.csv")
+  url_results_out = write_csv(url_results_combined, "results/url_check_results.csv")
   
 )
