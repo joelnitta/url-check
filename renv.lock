@@ -65,6 +65,13 @@
       "Repository": "CRAN",
       "Hash": "0c54cf3a08cc0e550fbd64ad33166143"
     },
+    "callr": {
+      "Package": "callr",
+      "Version": "3.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b7d7f1e926dfcd57c74ce93f5c048e80"
+    },
     "cli": {
       "Package": "cli",
       "Version": "2.0.2",
@@ -247,12 +254,26 @@
       "Repository": "CRAN",
       "Hash": "95ef9167b75dde9d2ccc3c7528393e7e"
     },
+    "processx": {
+      "Package": "processx",
+      "Version": "3.4.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "03446ed0b8129916f73676726cb3c48f"
+    },
     "progress": {
       "Package": "progress",
       "Version": "1.2.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "14dc9f7a3c91ebb14ec5bb9208a07061"
+    },
+    "ps": {
+      "Package": "ps",
+      "Version": "1.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f5d7d94cc097aa9dade988e3e6715067"
     },
     "purrr": {
       "Package": "purrr",
