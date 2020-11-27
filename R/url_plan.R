@@ -7,7 +7,7 @@ plan <- drake_plan(
   # - For example, if the original data has 500 rows and you split it
   #   into 50 slices, each slice will have 10 rows
   url_results_each = target(
-    check_url(urls_to_check),
+    check_urls(urls_to_check),
     transform = split(urls_to_check, slices = 50)
   ),
   
