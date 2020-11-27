@@ -52,9 +52,9 @@ The results will be saved to `results/url_check_results.csv`
 ## Modifying the code
 
 - Currently the code splits the input dataframe into 50 slices and checks URLs for each slice in parallel.
-To change the number of slices, adjust `slices = 50` in `R/url_plan.R`.
+To change the number of slices, adjust `slices = 50` in [`R/url_plan.R`](https://github.com/joelnitta/url-check/blob/608ed340481430d7db8d005e86908d43cf6d297d/R/url_plan.R#L11).
 
 - Currently the code is set up to run 4 processes in parallel using the [clustermq backend](https://books.ropensci.org/drake/hpc.html#the-clustermq-backend).
-Change the number of jobs appropriately in `_drake.R` to match the number of cores on your machine. You may also need to [change the backend](https://books.ropensci.org/drake/hpc.html#parallel-backends) depending on your setup.
+Change the number of jobs appropriately in [`_drake.R`](https://github.com/joelnitta/url-check/blob/608ed340481430d7db8d005e86908d43cf6d297d/_drake.R#L16) to match the number of cores on your machine. You may also need to [change the backend](https://books.ropensci.org/drake/hpc.html#parallel-backends) depending on your setup.
 
-- Adjust the function `check_urls()` in `R/url_functions.R` as needed depending on the names of the columns containing the URLs to check.
+- Adjust the function `check_urls()` in [`R/url_functions.R`](https://github.com/joelnitta/url-check/blob/608ed340481430d7db8d005e86908d43cf6d297d/R/url_functions.R#L76) as needed depending on the names of the columns containing the URLs to check.
