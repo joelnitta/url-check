@@ -3,7 +3,7 @@ plan <- drake_plan(
   # Read in data frame of URLs to check
   urls_to_check = read_csv("data/Sample_500.csv"),
   
-  # Check the URLs in slices of data so R doesn't crash
+  # Check the URLs in slices of data in parallel
   # - For example, if the original data has 500 rows and you split it
   #   into 50 slices, each slice will have 10 rows
   url_results_each = target(
