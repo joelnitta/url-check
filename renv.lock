@@ -240,6 +240,13 @@
       "Repository": "CRAN",
       "Hash": "bdf26e55ccb7df3e49a490150277f002"
     },
+    "pingr": {
+      "Package": "pingr",
+      "Version": "2.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "e293e79be42ffd336d938937fd3017fb"
+    },
     "pkgconfig": {
       "Package": "pkgconfig",
       "Version": "2.0.3",

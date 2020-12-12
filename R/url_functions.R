@@ -10,6 +10,7 @@
 #' - 5xx server error: the server failed to fulfil an apparently valid request
 #'
 #' @param x Input URL
+#' @param time_limit Maximum amount of time to wait (in seconds) before giving up on URL
 #'
 #' @return The status code of the URL. If the URL did not work at all,
 #' "no response" is returned.
@@ -22,11 +23,15 @@
 #'   NA,
 #'   "http://rud.is/this/path/does/not_exist",
 #'   "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=content+theft", 
-#'   "https://www.google.com/search?num=100&source=hp&ei=xGzMW5TZK6G8ggegv5_QAw&q=don%27t+be+a+content+thief&btnK=Google+Search&oq=don%27t+be+a+content+thief&gs_l=psy-ab.3...934.6243..7114...2.0..0.134.2747.26j6....2..0....1..gws-wiz.....0..0j35i39j0i131j0i20i264j0i131i20i264j0i22i30j0i22i10i30j33i22i29i30j33i160.mY7wCTYy-v0", 
 #'   "https://rud.is/b/2018/10/10/geojson-version-of-cbc-quebec-ridings-hex-cartograms-with-example-usage-in-r/")
 #' purrr::map_chr(some_urls, url_status)
 #' 
-url_status <- function (x) {
+url_status <- function (x, time_limit = 60) {
+  
+  # Check that we have an internet connection
+  assertthat::assert_that(
+    pingr::is_online(),
+    msg = "No internet connection detected")
   
   # safe version of httr::HEAD
   sHEAD <- purrr::safely(httr::HEAD)
@@ -41,13 +46,13 @@ url_status <- function (x) {
   # see httr::HEAD()
   # "This method is often used for testing hypertext links for validity, 
   # accessibility, and recent modification"
-  res <- sHEAD(x)
+  res <- sHEAD(x, httr::timeout(time_limit))
   
   # If that returned an error or a non-200 range status (meaning the URL is broken)
   # try GET next
   if (is.null(res$result) || ((httr::status_code(res$result) %/% 200) != 1)) {
     
-    res <- sGET(x)
+    res <- sGET(x, httr::timeout(time_limit))
     
     # If neither HEAD nor GET work, it's hard error
     if (is.null(res$result)) return("no response") # or whatever you want to return on "hard" errors
