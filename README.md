@@ -8,19 +8,9 @@ This takes a CSV file as input and checks the status of URLs in chunks in parall
 
 This was built with R version 4.0.2. It may work with other versions, but these have not been tested.
 
-All R packages are tracked and managed with [renv](https://rstudio.github.io/renv/).
+All R packages are tracked and managed with [renv](https://rstudio.github.io/renv/). 
 
-The first time the code is run, you may encounter this error if `renv` has not been set up yet:
-
-```
-Error in file(filename, "r", encoding = encoding) : 
-  cannot open the connection
-In addition: Warning message:
-In file(filename, "r", encoding = encoding) :
-  cannot open file 'renv/activate.R': No such file or directory
-```
-
-Set up `renv` as follows and it will go away.
+To install packages with `renv`, do the following.
 
 Install `renv`:
 
